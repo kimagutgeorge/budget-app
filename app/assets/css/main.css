@@ -1,0 +1,12 @@
+:root {
+  --paper: #EEF2F6; --card: #FFFFFF; --ink: #0F1B2D; --muted: #5B6B80;
+  --teal: #0E7C86; --saffron: #F2A93B; --gain: #2E9E6B; --loss: #D4533B;
+}
+html, body { background: var(--paper); color: var(--ink); font-family: 'Instrument Sans', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; overscroll-behavior: none; }
+.font-display { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.page-enter-active, .page-leave-active { transition: opacity .22s ease, transform .28s cubic-bezier(.22,1,.36,1); }
+.page-enter-from { opacity: 0; transform: translateX(14px); }
+.page-leave-to { opacity: 0; transform: translateX(-8px); }
+.press { transition: transform .15s cubic-bezier(.22,1,.36,1); }
+.press:active { transform: scale(.96); }
+@media (prefers-reduced-motion: reduce) { *, ::before, ::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
