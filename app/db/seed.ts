@@ -1,10 +1,12 @@
-import { db, uid } from './index'
+import { db, uid, getWorkspaceId } from './index'
 import { format, subDays } from 'date-fns'
 
 export async function seedDemo() {
-  const w = uid(), cash = uid(), mpesa = uid(), salary = uid(), food = uid(), rent = uid()
+  // const w = uid(), cash = uid(), mpesa = uid(), salary = uid(), food = uid(), rent = uid()
+  const w = await getWorkspaceId()
+  const cash = uid(), mpesa = uid(), salary = uid(), food = uid(), rent = uid()
   const day = (n: number) => format(subDays(new Date(), n), 'yyyy-MM-dd')
-  await db.workspaces.add({ id: w, name: 'Personal', currency: 'KES', createdAt: Date.now() })
+  // await db.workspaces.add({ id: w, name: 'Personal', currency: 'KES', createdAt: Date.now() })
   await db.accounts.bulkAdd([
     { id: mpesa, workspaceId: w, name: 'M-Pesa', type: 'mobile_money', currency: 'KES', openingBalance: 1_500_000, status: 'active' },
     { id: cash, workspaceId: w, name: 'Cash', type: 'cash', currency: 'KES', openingBalance: 300_000, status: 'active' },

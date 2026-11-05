@@ -10,3 +10,10 @@ html, body { background: var(--paper); color: var(--ink); font-family: 'Instrume
 .press { transition: transform .15s cubic-bezier(.22,1,.36,1); }
 .press:active { transform: scale(.96); }
 @media (prefers-reduced-motion: reduce) { *, ::before, ::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+
+.field {
+  width: 100%; border-radius: 14px; background: var(--paper); padding: 12px 14px; border: 2px solid transparent; outline: none; transition: border-color .2s;
+}
+.field:focus{
+  border-color: var(--teal);
+}
