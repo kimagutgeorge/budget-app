@@ -8,11 +8,19 @@ const tabs = [
   { to: '/reports', label: 'Reports', icon: 'lucide:chart-no-axes-column' },
 ]
 const index = computed(() => Math.max(0, tabs.findIndex((t) => (t.to === '/' ? route.path === '/' : route.path.startsWith(t.to)))))
+const addOpen = useState('addTxOpen', () => false)
 </script>
 
 <template>
   <div class="min-h-dvh pb-28" style="padding-top: env(safe-area-inset-top)">
     <slot />
+    <button class="press fixed right-5 z-40 grid h-14 w-14 place-items-cener rounded-2xl bg-[var(--ink)] text-white shadow-lg"
+    style="bottom:calc(6.25rem + env(safe-area-inset-bottom))"
+    aria-label="Add transaction" @click="addOpen = true"
+    >
+    <Icon name="lucide:plus" size="26" />
+    </button>
+    <AddTransactionSheet />
     <nav class="fixed inset-x-3 bottom-3 rounded-3xl bg-white/90 backdrop-blur shadow-[0_8px_30px_rgba(15,27,45,.12)]"
          style="margin-bottom: env(safe-area-inset-bottom)">
       <div class="relative grid grid-cols-5 p-1.5">
